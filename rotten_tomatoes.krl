@@ -36,6 +36,7 @@ ruleset rotten_tomatoes {
 		{
 			SquareTag:inject_styling();
 			CloudRain:createLoadPanel("CS 462 Lab 4: Rotten Tomatoes", {}, form);
+			
 		}
 		fired {
 			last;
@@ -46,7 +47,8 @@ ruleset rotten_tomatoes {
 		select when web submit "#lab4_form"
 		pre {
 		}
-		notify("Responded to submit", "Yes, I did!") with sticky = true;
+		{
+			notify("Responded to submit", "Yes, I did!") with sticky = true;
 		}
 	} 	
 }
