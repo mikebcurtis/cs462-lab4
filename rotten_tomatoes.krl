@@ -36,7 +36,6 @@ ruleset rotten_tomatoes {
 		{
 			SquareTag:inject_styling();
 			CloudRain:createLoadPanel("CS 462 Lab 4: Rotten Tomatoes", {}, form);
-			notify("This is a notify", "Yes, it is!") with sticky = true;
 			watch("#lab4_form", "submit");
 		}
 		fired {
@@ -47,9 +46,12 @@ ruleset rotten_tomatoes {
 	rule respond_submit is active {
 		select when web submit "#lab4_form"
 		pre {
+			query = event:attr("movieTitle")
+			search_data = search_movies(query)
+			title = search_data.pick("$..title")
 		}
 		{
-			notify("Responded to submit", "Yes, I did!") with sticky = true;
+			prepend("#cloudAppPanel-b505198x3-content","<b>#{title}</b>");
 		}
-	} 	
+	} 
 }
