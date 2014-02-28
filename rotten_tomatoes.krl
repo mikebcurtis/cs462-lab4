@@ -62,6 +62,7 @@ ruleset rotten_tomatoes {
 				<p>#{release}, #{mpaa}</p>
 				<p>Critics rating: #{ratings}</p>
 				<p>Synopsis: #{synopsis}</p>
+				<hr />
 			>>;
 			error_msg = "<p>Sorry, could not find any results for <b>#{query}</b></p>";
 			info_div = total > 0 => info | error_msg;
