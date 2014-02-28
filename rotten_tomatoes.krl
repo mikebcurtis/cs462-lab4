@@ -13,16 +13,23 @@ ruleset rotten_tomatoes {
   }
   global {
   }
-  rule HelloWorld is active {
+  rule show_form is active {
     select when web cloudAppSelected
-    pre {
-      my_html = <<
-        <h5>Hello, world!</h5>
-      >>;
-    }
+	pre {
+		form = <<
+		<h3>Movie search:</h3>
+		<form id="lab4_form" onsubmit="return false">
+			<input type="text" name="movieTitle" /><br />
+			<input type="submit" value="Submit" />
+		</form>
+		>>;
+	}
     {
       SquareTag:inject_styling();
-      CloudRain:createLoadPanel("Hello World!", {}, my_html);
+      CloudRain:createLoadPanel("CS 462 Lab 4: Rotten Tomatoes", {}, form);
     }
+	fired {
+		last;
+	}
   }
 }
