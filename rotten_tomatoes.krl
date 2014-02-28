@@ -16,7 +16,7 @@ ruleset rotten_tomatoes {
 			http:get("http://api.rottentomatoes.com/api/public/v1.0/movies.json",
 						{"apikey": "cmcxzxm2vjhj5skwk2b27nbg",
 						  "q": query,
-						  "page_limit": 1}).pick("$..title");
+						  "page_limit": 1}).pick("$.content").decode();
 		};
 	}
   
@@ -48,9 +48,10 @@ ruleset rotten_tomatoes {
 		pre {
 			query = event:attr("movieTitle");
 			search_data = search_movies(query);
+			title = search_data.pick("$..title");
 		}
 		{
-			prepend("#cloudAppPanel-b505198x3-content","<b>#{search_data}</b>");
+			prepend("#cloudAppPanel-b505198x3-content","<b>#{title}</b>");
 		}
 	} 
 }
