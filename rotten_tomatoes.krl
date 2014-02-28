@@ -69,7 +69,6 @@ ruleset rotten_tomatoes {
 			info_div = total > 0 => info | error_msg;
 		}
 		{
-			replace_html("#movieInfo","");
 			replace_html("#movieInfo",info_div);
 		}
 	} 
