@@ -18,7 +18,6 @@ ruleset rotten_tomatoes {
 						  "q": query,
 						  "page_limit": 1}).pick("$.content").decode();
 		};
-		form
 	}
   
 	rule show_form is active {
