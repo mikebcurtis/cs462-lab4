@@ -41,4 +41,12 @@ ruleset rotten_tomatoes {
 			last;
 		}
 	}
+	
+	rule respond_submit {
+		select when web submit "#lab4_form"
+		pre {
+		}
+		notify("Responded to submit", "Yes, I did!") with sticky = true;
+		}
+	} 	
 }
