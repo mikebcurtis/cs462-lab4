@@ -57,13 +57,11 @@ ruleset rotten_tomatoes {
 			ratings = search_data.pick("$..movies[0].ratings.critics_rating");
 			mpaa = search_data.pick("$..movies[0].mpaa_rating");
 			info = <<
-				<div style="margin-left:36px">
 				<h3>#{title}</h3><br />
 				<img src="#{thumbnail_src}" />
 				<p>#{release}, #{mpaa}</p>
 				<p>Critics rating: #{ratings}</p>
 				<p>Synopsis: #{synopsis}</p>
-				</div>
 			>>;
 			error_msg = "<p>Sorry, could not find any results for <b>#{query}</b></p>";
 			info_div = total > 0 => info | error_msg;
