@@ -16,7 +16,7 @@ ruleset rotten_tomatoes {
 			http:get("http://api.rottentomatoes.com/api/public/v1.0/movies.json",
 						{"apikey": "cmcxzxm2vjhj5skwk2b27nbg",
 						  "q": query,
-						  "page_limit": 1}).pick("$.content").decode();
+						  "page_limit": 1}).pick("$..title");
 		};
 	}
   
