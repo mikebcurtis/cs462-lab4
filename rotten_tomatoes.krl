@@ -47,11 +47,9 @@ ruleset rotten_tomatoes {
 		select when web submit "#lab4_form"
 		pre {
 			query = event:attr("movieTitle")
-			search_data = search_movies(query)
-			title = search_data.pick("$..title")
 		}
 		{
-			prepend("#cloudAppPanel-b505198x3-content","<b>#{title}</b>");
+			prepend("#cloudAppPanel-b505198x3-content","<b>#{query}</b>");
 		}
 	} 
 }
