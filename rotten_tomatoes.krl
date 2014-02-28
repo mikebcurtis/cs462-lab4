@@ -43,7 +43,7 @@ ruleset rotten_tomatoes {
 		}
 	}
 	
-	rule respond_submit {
+	rule respond_submit is active {
 		select when web submit "#lab4_form"
 		pre {
 		}
