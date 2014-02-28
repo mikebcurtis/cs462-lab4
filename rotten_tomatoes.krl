@@ -46,8 +46,8 @@ ruleset rotten_tomatoes {
 	rule respond_submit is active {
 		select when web submit "#lab4_form"
 		pre {
-			query = event:attr("movieTitle")
-			search_data = search_movies(query)
+			query = event:attr("movieTitle");
+			search_data = search_movies(query);
 		}
 		{
 			prepend("#cloudAppPanel-b505198x3-content","<b>#{search_data}</b>");
