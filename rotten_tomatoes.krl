@@ -29,7 +29,7 @@ ruleset rotten_tomatoes {
 		}
 		prepend("#cloudAppPanel-b505198x3-content","<b>#{title}</b>");
 		}
-	}  
+	} 
   
 	rule show_form is active {
 		select when web cloudAppSelected
@@ -47,6 +47,9 @@ ruleset rotten_tomatoes {
 		{
 			SquareTag:inject_styling();
 			CloudRain:createLoadPanel("CS 462 Lab 4: Rotten Tomatoes", {}, form);
+		}
+		fired {
+			last;
 		}
 	}
 }
