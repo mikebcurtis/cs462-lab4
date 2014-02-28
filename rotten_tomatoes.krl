@@ -17,11 +17,13 @@ ruleset rotten_tomatoes {
     select when web cloudAppSelected
 	pre {
 		form = <<
+		<div style="margin-left:36px">
 		<h3>Movie search:</h3>
 		<form id="lab4_form" onsubmit="return false">
 			<input type="text" name="movieTitle" /><br />
 			<input type="submit" value="Submit" />
 		</form>
+		</div>
 		>>;
 	}
     {
