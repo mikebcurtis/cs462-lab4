@@ -64,7 +64,7 @@ ruleset rotten_tomatoes {
 				<p>Synopsis: #{synopsis}</p>
 				<hr />
 			>>;
-			error_msg = "<p>Sorry, could not find any results for <b>#{query}</b></p>";
+			error_msg = "<p>Sorry, could not find any results for <b>#{query}</b></p><br />";
 			info_div = total > 0 => info | error_msg;
 		}
 		{
