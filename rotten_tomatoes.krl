@@ -20,17 +20,6 @@ ruleset rotten_tomatoes {
 		};
 	}
   
-	rule respond_submit {
-		select when web submit "#lab4_form"
-		pre {
-			query = event:attr("movieTitle")
-			search_data = search_movies(query)
-			title = search_data.pick("$..title")
-		}
-		prepend("#cloudAppPanel-b505198x3-content","<b>#{title}</b>");
-		}
-	} 
-  
 	rule show_form is active {
 		select when web cloudAppSelected
 		pre {
