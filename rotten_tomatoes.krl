@@ -12,6 +12,12 @@ ruleset rotten_tomatoes {
   dispatch {
   }
   global {
+	search_movies = function(query) {
+		http:get("http://api.rottentomatoes.com/api/public/v1.0/movies.json",
+					{"apikey", "cmcxzxm2vjhj5skwk2b27nbg"},
+					{"q", query},
+					{"page_limit", 1});
+	};
   }
   rule show_form is active {
     select when web cloudAppSelected
