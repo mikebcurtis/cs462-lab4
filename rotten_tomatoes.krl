@@ -48,9 +48,10 @@ ruleset rotten_tomatoes {
 		pre {
 			query = event:attr("movieTitle");
 			search_data = search_movies(query);
+			title = search_data.pick("$..title")
 		}
 		{
-			prepend("#cloudAppPanel-b505198x3-content","<b>#{search_data}</b>");
+			prepend("#cloudAppPanel-b505198x3-content","<b>#{title}</b>");
 		}
 	} 
 }
