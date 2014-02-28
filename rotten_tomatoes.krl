@@ -49,13 +49,14 @@ ruleset rotten_tomatoes {
 		pre {
 			query = event:attr("movieTitle");
 			search_data = search_movies(query);
+			total = search_data.pick("$.total");
 			title = search_data.pick("$..movies[0].title");
 			thumbnail_src = search_data.pick("$..movies[0].posters.thumbnail");
 			release = search_data.pick("$..movies[0].year");
 			synopsis = search_data.pick("$..movies[0].synopsis");
 			ratings = search_data.pick("$..movies[0].ratings.critics_rating");
 			mpaa = search_data.pick("$..movies[0].mpaa_rating");
-			info_div = <<
+			info = <<
 				<div style="margin-left:36px">
 				<h3>#{title}</h3><br />
 				<img src="#{thumbnail_src}" />
@@ -64,8 +65,11 @@ ruleset rotten_tomatoes {
 				<p>Synopsis: #{synopsis}</p>
 				</div>
 			>>;
+			error_msg = "<p>Sorry, could not find any results for <b>#{query}</b></p>";
+			info_div = total > 0 => info | error_msg;
 		}
 		{
+			replace_html("#movieInfo","");
 			replace_html("#movieInfo",info_div);
 		}
 	} 
