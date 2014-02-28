@@ -49,9 +49,23 @@ ruleset rotten_tomatoes {
 			query = event:attr("movieTitle");
 			search_data = search_movies(query);
 			title = search_data.pick("$..movies[0].title");
+			thumbnail_src = search_data.pick("$..movies[0].posters.thumbnail");
+			release = search_data.pick("$..movies[0].year");
+			synopsis = search_data.pick("$..movies[0].synopsis");
+			ratings = search_data.pick("$..movies[0].ratings.critics_rating");
+			mpaa = search_data.pick("$..movies[0].mpaa_rating");
+			info_div = <<
+				<div style="margin-left:36px">
+				<h3>#{title}</h3><br />
+				<img src="#{thumbnail_src}" />
+				<p>#{release}, #{mpaa}</p>
+				<p>Critics rating: #{ratings}</p>
+				<p>Synopsis: #{synopsis}</p>
+				</div>
+			>>;
 		}
 		{
-			prepend("#cloudAppPanel-b505198x3-content","<b>#{title}</b>");
+			prepend("#cloudAppPanel-b505198x3-content",info_div);
 		}
 	} 
 }
