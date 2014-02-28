@@ -25,6 +25,7 @@ ruleset rotten_tomatoes {
 		pre {
 			form = <<
 			<div style="margin-left:36px">
+			<div id="movieInfo"></div>
 			<h3>Movie search:</h3>
 			<form id="lab4_form" onsubmit="return false">
 				<input type="text" name="movieTitle" /><br />
@@ -65,7 +66,7 @@ ruleset rotten_tomatoes {
 			>>;
 		}
 		{
-			prepend("#cloudAppPanel-b505198x3-content",info_div);
+			replace_html("#movieInfo",info_div);
 		}
 	} 
 }
