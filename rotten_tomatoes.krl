@@ -18,6 +18,7 @@ ruleset rotten_tomatoes {
 						  "q": query,
 						  "page_limit": 1}).pick("$.content").decode();
 		};
+		form
 	}
   
 	rule show_form is active {
@@ -67,7 +68,7 @@ ruleset rotten_tomatoes {
 			info_div = total > 0 => info | error_msg;
 		}
 		{
-			replace_html("#movieInfo",info_div);
+			prepend("#movieInfo",info_div);
 		}
 	} 
 }
